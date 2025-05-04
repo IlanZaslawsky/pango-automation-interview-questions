@@ -40,18 +40,6 @@ Upon completion, generate a concise report highlighting cities with notable temp
 
 ---
 
-## Installation
-
-- Install dependencies:
-
-```bash
-pip install -r requirements.txt
-# OR individually:
-pip install requests pytest selenium
-```
-
----
-
 ## Project Enhancement Tasks - Advanced Implementation (Required)
 
 You must implement at least **two** of the following enhancements:
