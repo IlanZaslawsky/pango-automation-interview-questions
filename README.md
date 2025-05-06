@@ -40,9 +40,9 @@ Design and implement a testing and analysis solution that compares real-time tem
 
 ---
 
-## BONUS QUESTION — Advanced Enhancements (Choose **two**)
+## BONUS QUESTION — Advanced Enhancements
 
-Implement at least **two** of the following advanced features:
+Implement at least **one** of the following advanced features:
 
 - **AI-Driven Error Handling**  
   - Predict and detect anomalies before they cause failures.  
