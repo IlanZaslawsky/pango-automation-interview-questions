@@ -1,77 +1,80 @@
-# Weather API Testing and Analysis Project
+# Weather API Testing & Analysis Project
 
-## Test Cases
-
-
-### 1. Utilize Weather Data for Multiple Cities via City ID Parameter
-
-Example API Endpoint:
-
-```
-https://api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
-```
-
-- Insert temperature and feels_like responses for each city into the database.
-- Create a new database column for the average temperature of each city.
-- Assert that data inserted into the database matches the API response.
-- Print the city with the highest average temperature.
-
-### 2. Dynamic API Key and Base URL Configuration
-
-- Implement configuration management to dynamically retrieve the API KEY and BASE URL from `config.ini` for API calls.
-
-### 3. Web Question: City Temperature Discrepancy Analysis
-
-- Conduct comparative temperature analysis for at least 20 cities using:
-  - [timeanddate.com](https://www.timeanddate.com/weather/)
-  - [OpenWeatherMap API](https://openweathermap.org/current)
-
-Example API Endpoint:
-
-```
-https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-```
-
-- Identify an appropriate API to obtain city names for testing.
-- Employ Selenium for extracting temperature data from the website.
-- Use the existing database from previous tasks for data consistency.
-
-Upon completion, generate a concise report highlighting cities with notable temperature discrepancies between the sources.
+## Overview
+Design and implement a testing and analysis solution that compares real-time temperature readings from a public website and an external API, stores and analyzes the data, and generates a discrepancy report.
 
 ---
 
-## Project Enhancement Tasks - Advanced Implementation (Required)
+## Test Case: City Temperature Discrepancy Analysis
 
-You must implement at least **two** of the following enhancements:
+1. **Cities**  
+   - Select **20** random cities.
 
-- **Smarter Error Handling:**
-  - Implement predictive error detection using AI-driven anomaly detection. Include tests demonstrating proactive error identification.
+2. **Data Sources**  
+   - **Website**: scrape current temperature from [timeanddate.com](https://www.timeanddate.com/weather/).  
+   - **API**: fetch temperature data from OpenWeatherMap using the endpoint:  
+     ```
+     https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+     ```
 
-- **Intelligent Logging:**
-  - Upgrade logs with AI-based analysis to automatically highlight trends, anomalies, and insights, making debugging and monitoring more effective.
+3. **Data Extraction**  
+   - **Web Scraping**  
+     - Use Selenium or Playwright to retrieve the displayed “temperature” and “feels_like” values for each city.
+   - **API Call**  
+     - Read `API_KEY` and `BASE_URL` dynamically from a `config.ini` file.
+     - Parse the JSON response to extract “temp” and “feels_like.”
 
-- **Dynamic Test Data:**
-  - Generate adaptive, scenario-based test data dynamically to ensure comprehensive test coverage and adaptability.
+4. **Database Integration**  
+   - Insert each city’s:
+     - `temperature_web`
+     - `feels_like_web`
+     - `temperature_api`
+     - `feels_like_api`
+   - Create a computed column `avg_temperature` that averages the web and API temperatures.
+   - Use the existing database schema from prior tasks for consistency.
 
-- **Evolving Data Storage:**
-  - Extend the database to include historical weather data. Implement analytical queries or visualizations to derive valuable insights from historical trends.
-
-- **Adaptive Web Scraping:**
-  - Enhance scraper robustness with adaptive scraping techniques capable of dynamically adjusting to changes in website structure.
-
-- **Insightful Reporting:**
-  - Present analysis results through interactive and visually engaging dashboards powered by AI-driven insights and visualization techniques.
-
-- **Event-Driven Messaging:**
-  - Integrate event-driven architecture to efficiently handle asynchronous data updates and notifications.
-
-- **Support different types of CI/CD:**
-  - Integrate CI/CD pipelines such as Bitbucket Pipelines and GitHub Actions to streamline automated testing and deployment.
+5. **Reporting**  
+   - After data collection, generate a report (CSV or HTML) highlighting:
+     - Cities where the difference between web and API temperatures exceeds a configurable threshold.
+     - Summary statistics (mean, max, min discrepancy).
 
 ---
 
-## Time and Submission
+## BONUS QUESTION — Advanced Enhancements (Choose **two**)
 
-- This home task is expected to take approximately **2 hours**.
-- Your responses and completed tasks must be submitted via a GitHub project repository.
+Implement at least **two** of the following advanced features:
 
+- **AI-Driven Error Handling**  
+  - Predict and detect anomalies before they cause failures.  
+  - Include unit tests that simulate unusual API responses and website errors.
+
+- **Intelligent Logging & Monitoring**  
+  - Augment logs with AI analysis to surface trends and potential issues automatically.
+
+- **Dynamic Test Data Generation**  
+  - Create scenario-based, data-driven tests that adapt to varying weather conditions.
+
+- **Historical Data Analytics**  
+  - Extend the database to store daily historical weather readings.  
+  - Produce SQL queries or visualizations that reveal trends over time.
+
+- **Adaptive Web Scraper**  
+  - Implement logic that detects changes in the website’s structure and self-heals the scraping logic.
+
+- **Interactive Dashboards**  
+  - Build an interactive dashboard (e.g., using Grafana, Dash, or Power BI) to visualize real-time vs. API data and discrepancies.
+
+- **Event-Driven Architecture**  
+  - Use message queues (e.g., Kafka or RabbitMQ or AWS SNS) to handle data updates and trigger notifications when thresholds are exceeded.
+
+- **CI/CD Integration**  
+  - Configure automated testing and deployment pipelines (e.g., GitHub Actions, Bitbucket Pipelines) that run your tests and publish reports on each merge.
+
+---
+
+## Estimated Effort & Submission
+
+- **Estimated Time**: ~2 hours  
+- **Submission**:  
+  1. Push your code, configuration, and report(s) to a **GitHub repository**.  
+  2. Include a brief README explaining how to set up, run tests, and view reports.
