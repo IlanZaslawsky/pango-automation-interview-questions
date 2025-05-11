@@ -21,7 +21,6 @@ Design and implement a testing and analysis solution that compares real-time tem
    - **Web Scraping**  
      - Use Selenium or Playwright to retrieve the displayed “temperature” and “feels_like” values for each city.
    - **API Call**  
-     - Read `API_KEY` and `BASE_URL` dynamically from a `config.ini` file.
      - Parse the JSON response to extract “temp” and “feels_like.”
 
 4. **Database Integration**  
@@ -46,7 +45,6 @@ Implement at least **one** of the following advanced features:
 
 - **AI-Driven Error Handling**  
   - Predict and detect anomalies before they cause failures.  
-  - Include unit tests that simulate unusual API responses and website errors.
 
 - **Intelligent Logging & Monitoring**  
   - Augment logs with AI analysis to surface trends and potential issues automatically.
