@@ -39,40 +39,8 @@ Design and implement a testing and analysis solution that compares real-time tem
 
 ---
 
-## BONUS QUESTION — Advanced Enhancements
-
-Implement at least **one** of the following advanced features:
-
-- **AI-Driven Error Handling**  
-  - Predict and detect anomalies before they cause failures.  
-
-- **Intelligent Logging & Monitoring**  
-  - Augment logs with AI analysis to surface trends and potential issues automatically.
-
-- **Dynamic Test Data Generation**  
-  - Create scenario-based, data-driven tests that adapt to varying weather conditions.
-
-- **Historical Data Analytics**  
-  - Extend the database to store daily historical weather readings.  
-  - Produce SQL queries or visualizations that reveal trends over time.
-
-- **Adaptive Web Scraper**  
-  - Implement logic that detects changes in the website’s structure and self-heals the scraping logic.
-
-- **Interactive Dashboards**  
-  - Build an interactive dashboard (e.g., using Grafana, Dash, or Power BI) to visualize real-time vs. API data and discrepancies.
-
-- **Event-Driven Architecture**  
-  - Use message queues (e.g., Kafka or RabbitMQ or AWS SNS) to handle data updates and trigger notifications when thresholds are exceeded.
-
-- **CI/CD Integration**  
-  - Configure automated testing and deployment pipelines (e.g., GitHub Actions, Bitbucket Pipelines) that run your tests and publish reports on each merge.
-
----
-
 ## Estimated Effort & Submission
 
-- **Estimated Time**: ~2 hours  
 - **Submission**:  
   1. Push your code, configuration, and report(s) to a **GitHub repository**.  
   2. Include a brief README explaining how to set up, run tests, and view reports.
