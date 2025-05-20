@@ -75,7 +75,7 @@ Use a standard Python testing framework. Ensure tests can be easily executed wit
 
 ## Submission Guidelines
 
-1. Push the following to the **existing GitHub repository**:
+1. Push the following to the ** GitHub repository**:
  - Source code
  - Configuration files
  - Test scripts
