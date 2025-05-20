@@ -36,7 +36,7 @@ Extract the following fields from the JSON response:
 
 ### 4. Database Integration
 
-- You are **free to define your own database schema**.
+- You are **free to define your own database but use this schema**.
 - For each city, store:
 - `temperature_web`
 - `feels_like_web`
@@ -67,8 +67,6 @@ After data collection, generate a report. You may choose between:
 
 Your solution must include an **automated test framework** that covers:
 
-- **Unit tests** for core logic and data processing
-- **Integration tests** for scraping and API communication
 - **End-to-end tests** for the full pipeline (data collection → DB → report)
 
 Use a standard Python testing framework. Ensure tests can be easily executed with clear instructions.
