@@ -1,46 +1,93 @@
 # Weather API Testing & Analysis Project
 
 ## Overview
-Design and implement a testing and analysis solution that compares real-time temperature readings from a public website and an external API, stores and analyzes the data, and generates a discrepancy report.
+
+The goal of this task is to **extend the existing project** by designing and implementing a module that tests and analyzes temperature data. This module should compare real-time readings from a public website and a weather API, store and process the data, and generate a discrepancy report.
+
+> ⚠️ **Important**: This work must be use fork from this **existing project**.
 
 ---
 
 ## Test Case: City Temperature Discrepancy Analysis
 
-1. **Cities**  
-   - Select **20** random cities.
+### 1. City Selection
 
-2. **Data Sources**  
-   - **Website**: scrape current temperature from [timeanddate.com](https://www.timeanddate.com/weather/).  
-   - **API**: fetch temperature data from OpenWeatherMap using the endpoint:  
-     ```
-     https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-     ```
+- Select **20 random cities** for the analysis. (Cities names could be hardcoded)
 
-3. **Data Extraction**  
-   - **Web Scraping**  
-     - Use Selenium or Playwright to retrieve the displayed “temperature” and “feels_like” values for each city.
-   - **API Call**  
-     - Parse the JSON response to extract “temp” and “feels_like.”
+### 2. Data Sources
 
-4. **Database Integration**  
-   - Insert each city’s:
-     - `temperature_web`
-     - `feels_like_web`
-     - `temperature_api`
-     - `feels_like_api`
-   - Create a computed column `avg_temperature` that averages the web and API temperatures.
-   - Use the existing database schema from prior tasks for consistency.
+- **Website**  
+  Scrape current `temperature` and `feels like` values from [timeanddate.com](https://www.timeanddate.com/weather/).
 
-5. **Reporting**  
-   - After data collection, generate a report (CSV or HTML) highlighting:
-     - Cities where the difference between web and API temperatures exceeds a configurable threshold.
-     - Summary statistics (mean, max, min discrepancy).
+- **API**  
+  Use the OpenWeatherMap API to fetch current weather data:  https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
+### 3. Data Extraction
+
+- **Web Scraping**  
+Use Selenium or Playwright to extract:
+- `temperature_web`
+- `feels_like_web`
+
+- **API Call**  
+Extract the following fields from the JSON response:
+- `temperature_api`
+- `feels_like_api`
+
+### 4. Database Integration
+
+- You are **free to define your own database schema**.
+- For each city, store:
+- `temperature_web`
+- `feels_like_web`
+- `temperature_api`
+- `feels_like_api`
+- Add a computed column:
+- `avg_temperature` — the average of the web and API temperature values.
+
+### 5. Reporting
+
+After data collection, generate a report. You may choose between:
+- A **single combined report**, or
+- **Two separate reports** (e.g., one for discrepancies and one for statistics)
+
+**Format**:  
+- Free choice (CSV, HTML, JSON, Markdown, etc.)
+
+**Contents**:
+- Cities where the **difference between website and API temperatures exceeds a configurable threshold**
+- **Summary statistics**:
+- Mean discrepancy
+- Maximum discrepancy
+- Minimum discrepancy
 
 ---
 
-## Estimated Effort & Submission
+## Test Automation Framework
 
-- **Submission**:  
-  1. Push your code, configuration, and report(s) to a **GitHub repository**.  
-  2. Include a brief README explaining how to set up, run tests, and view reports.
+Your solution must include an **automated test framework** that covers:
+
+- **Unit tests** for core logic and data processing
+- **Integration tests** for scraping and API communication
+- **End-to-end tests** for the full pipeline (data collection → DB → report)
+
+Use a standard Python testing framework. Ensure tests can be easily executed with clear instructions.
+
+---
+
+## Submission Guidelines
+
+1. Push the following to the **existing GitHub repository**:
+ - Source code
+ - Configuration files
+ - Test scripts
+ - Generated report(s)
+
+2. Include a README that provides:
+ - Setup instructions
+ - How to run the project and the tests
+ - How to view and interpret the report(s)
+
+---
+
+Good luck, and make sure your code is clean, well-documented, and testable!
