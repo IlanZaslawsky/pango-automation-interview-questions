@@ -1,0 +1,223 @@
+{
+  "timestamp": "2025-05-25T23:05:41.887036",
+  "discrepancies": [
+    {
+      "city": "stockholm, Sweden",
+      "web_temperature": 18.0,
+      "api_temperature": 12.46,
+      "temperature_difference": 5.539999999999999,
+      "web_feels_like": 18.0,
+      "api_feels_like": 11.43,
+      "feels_like_difference": 6.57
+    },
+    {
+      "city": "beijing, China",
+      "web_temperature": 18.0,
+      "api_temperature": 12.94,
+      "temperature_difference": 5.0600000000000005,
+      "web_feels_like": 18.0,
+      "api_feels_like": 11.13,
+      "feels_like_difference": 6.869999999999999
+    },
+    {
+      "city": "new york, United States",
+      "web_temperature": 18.0,
+      "api_temperature": 19.39,
+      "temperature_difference": 1.3900000000000006,
+      "web_feels_like": 18.0,
+      "api_feels_like": 18.59,
+      "feels_like_difference": 0.5899999999999999
+    },
+    {
+      "city": "berlin, Germany",
+      "web_temperature": 18.0,
+      "api_temperature": 15.01,
+      "temperature_difference": 2.99,
+      "web_feels_like": 18.0,
+      "api_feels_like": 15.05,
+      "feels_like_difference": 2.9499999999999993
+    },
+    {
+      "city": "london, United Kingdom",
+      "web_temperature": 18.0,
+      "api_temperature": 15.64,
+      "temperature_difference": 2.3599999999999994,
+      "web_feels_like": 18.0,
+      "api_feels_like": 14.62,
+      "feels_like_difference": 3.380000000000001
+    },
+    {
+      "city": "sao paulo, Brazil",
+      "web_temperature": 18.0,
+      "api_temperature": 23.8,
+      "temperature_difference": 5.800000000000001,
+      "web_feels_like": 18.0,
+      "api_feels_like": 23.91,
+      "feels_like_difference": 5.91
+    },
+    {
+      "city": "mumbai, India",
+      "web_temperature": 18.0,
+      "api_temperature": 28.99,
+      "temperature_difference": 10.989999999999998,
+      "web_feels_like": 18.0,
+      "api_feels_like": 35.99,
+      "feels_like_difference": 17.990000000000002
+    },
+    {
+      "city": "zurich, Switzerland",
+      "web_temperature": 18.0,
+      "api_temperature": 15.86,
+      "temperature_difference": 2.1400000000000006,
+      "web_feels_like": 18.0,
+      "api_feels_like": 15.33,
+      "feels_like_difference": 2.67
+    },
+    {
+      "city": "tokyo, Japan",
+      "web_temperature": 18.0,
+      "api_temperature": 18.38,
+      "temperature_difference": 0.379999999999999,
+      "web_feels_like": 18.0,
+      "api_feels_like": 17.63,
+      "feels_like_difference": 0.370000000000001
+    },
+    {
+      "city": "seoul, South Korea",
+      "web_temperature": 18.0,
+      "api_temperature": 11.76,
+      "temperature_difference": 6.24,
+      "web_feels_like": 18.0,
+      "api_feels_like": 11.6,
+      "feels_like_difference": 6.4
+    },
+    {
+      "city": "rome, Italy",
+      "web_temperature": 18.0,
+      "api_temperature": 26.22,
+      "temperature_difference": 8.219999999999999,
+      "web_feels_like": 18.0,
+      "api_feels_like": 26.22,
+      "feels_like_difference": 8.219999999999999
+    },
+    {
+      "city": "toronto, Canada",
+      "web_temperature": 18.0,
+      "api_temperature": 12.68,
+      "temperature_difference": 5.32,
+      "web_feels_like": 18.0,
+      "api_feels_like": 12.22,
+      "feels_like_difference": 5.779999999999999
+    },
+    {
+      "city": "amsterdam, Netherlands",
+      "web_temperature": 18.0,
+      "api_temperature": 14.31,
+      "temperature_difference": 3.6899999999999995,
+      "web_feels_like": 18.0,
+      "api_feels_like": 13.6,
+      "feels_like_difference": 4.4
+    },
+    {
+      "city": "singapore, Singapore",
+      "web_temperature": 18.0,
+      "api_temperature": 26.9,
+      "temperature_difference": 8.899999999999999,
+      "web_feels_like": 18.0,
+      "api_feels_like": 30.35,
+      "feels_like_difference": 12.350000000000001
+    },
+    {
+      "city": "dubai, United Arab Emirates",
+      "web_temperature": 18.0,
+      "api_temperature": 33.96,
+      "temperature_difference": 15.96,
+      "web_feels_like": 18.0,
+      "api_feels_like": 40.08,
+      "feels_like_difference": 22.08
+    },
+    {
+      "city": "sydney, Australia",
+      "web_temperature": 18.0,
+      "api_temperature": 10.07,
+      "temperature_difference": 7.93,
+      "web_feels_like": 18.0,
+      "api_feels_like": 9.25,
+      "feels_like_difference": 8.75
+    },
+    {
+      "city": "moscow, Russia",
+      "web_temperature": 18.0,
+      "api_temperature": 18.24,
+      "temperature_difference": 0.23999999999999844,
+      "web_feels_like": 18.0,
+      "api_feels_like": 17.48,
+      "feels_like_difference": 0.5199999999999996
+    },
+    {
+      "city": "paris, France",
+      "web_temperature": 18.0,
+      "api_temperature": 16.71,
+      "temperature_difference": 1.2899999999999991,
+      "web_feels_like": 18.0,
+      "api_feels_like": 16.03,
+      "feels_like_difference": 1.9699999999999989
+    },
+    {
+      "city": "madrid, Spain",
+      "web_temperature": 18.0,
+      "api_temperature": 25.14,
+      "temperature_difference": 7.140000000000001,
+      "web_feels_like": 18.0,
+      "api_feels_like": 24.78,
+      "feels_like_difference": 6.780000000000001
+    },
+    {
+      "city": "mexico city, Mexico",
+      "web_temperature": 18.0,
+      "api_temperature": 22.75,
+      "temperature_difference": 4.75,
+      "web_feels_like": 18.0,
+      "api_feels_like": 22.15,
+      "feels_like_difference": 4.149999999999999
+    }
+  ],
+  "statistics": {
+    "temperature": {
+      "mean_difference": 5.3165,
+      "max_difference": 15.96,
+      "min_difference": 0.23999999999999844
+    },
+    "feels_like": {
+      "mean_difference": 6.435,
+      "max_difference": 22.08,
+      "min_difference": 0.370000000000001
+    }
+  },
+  "test_status": {
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "Invalid API data for new york, United States: got (19.39, 18.59), expected (18.0, 18.0)",
+      "Invalid API data for london, United Kingdom: got (15.64, 14.62), expected (18.0, 18.0)",
+      "Invalid API data for tokyo, Japan: got (18.38, 17.63), expected (18.0, 18.0)",
+      "Invalid API data for paris, France: got (16.71, 16.03), expected (18.0, 18.0)",
+      "Invalid API data for berlin, Germany: got (15.01, 15.05), expected (18.0, 18.0)",
+      "Invalid API data for rome, Italy: got (26.22, 26.22), expected (18.0, 18.0)",
+      "Invalid API data for madrid, Spain: got (25.14, 24.78), expected (18.0, 18.0)",
+      "Invalid API data for toronto, Canada: got (12.68, 12.22), expected (18.0, 18.0)",
+      "Invalid API data for sydney, Australia: got (10.07, 9.25), expected (18.0, 18.0)",
+      "Invalid API data for beijing, China: got (12.94, 11.13), expected (18.0, 18.0)",
+      "Invalid API data for mumbai, India: got (28.99, 35.99), expected (18.0, 18.0)",
+      "Invalid API data for sao paulo, Brazil: got (23.8, 23.91), expected (18.0, 18.0)",
+      "Invalid API data for moscow, Russia: got (18.24, 17.48), expected (18.0, 18.0)",
+      "Invalid API data for seoul, South Korea: got (11.76, 11.6), expected (18.0, 18.0)",
+      "Invalid API data for mexico city, Mexico: got (22.75, 22.15), expected (18.0, 18.0)",
+      "Invalid API data for amsterdam, Netherlands: got (14.31, 13.6), expected (18.0, 18.0)",
+      "Invalid API data for zurich, Switzerland: got (15.86, 15.33), expected (18.0, 18.0)",
+      "Invalid API data for stockholm, Sweden: got (12.46, 11.43), expected (18.0, 18.0)",
+      "Invalid API data for singapore, Singapore: got (26.9, 30.35), expected (18.0, 18.0)",
+      "Invalid API data for dubai, United Arab Emirates: got (33.96, 40.08), expected (18.0, 18.0)"
+    ]
+  }
+}

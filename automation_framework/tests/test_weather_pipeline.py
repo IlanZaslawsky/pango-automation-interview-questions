@@ -93,6 +93,7 @@ async def test_weather_data_pipeline(config, api, db, report_generator, mock_pag
         "warnings": []
     }
     
+    report_path = None
     try:
         # Get all cities from config
         test_cities = config.get_cities()
@@ -153,9 +154,8 @@ async def test_weather_data_pipeline(config, api, db, report_generator, mock_pag
             assert "statistics" in report_data
             assert "test_status" in report_data
             
-            # Clean up
-            if os.path.exists(report_path):
-                os.remove(report_path)
+            # Print report location
+            print(f"\nTest report generated at: {os.path.abspath(report_path)}")
                 
     except Exception as e:
         test_status["success"] = False
@@ -166,6 +166,5 @@ async def test_weather_data_pipeline(config, api, db, report_generator, mock_pag
             api_data if 'api_data' in locals() else {},
             test_status
         )
-        if os.path.exists(report_path):
-            os.remove(report_path)
+        print(f"\nTest report generated at: {os.path.abspath(report_path)}")
         raise 
