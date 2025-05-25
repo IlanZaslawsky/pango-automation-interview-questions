@@ -1,91 +1,113 @@
 # Weather API Testing & Analysis Project
 
 ## Overview
+This project implements an automated system for comparing weather data from timeanddate.com and OpenWeatherMap API. It collects temperature data from both sources, stores it in a database, and generates reports highlighting discrepancies.
 
-The goal of this task is to **extend the existing project** by designing and implementing a module that tests and analyzes temperature data. This module should compare real-time readings from a public website and a weather API, store and process the data, and generate a discrepancy report.
+## Features
+- Web scraping using Playwright
+- OpenWeatherMap API integration
+- SQLite database storage
+- Configurable temperature discrepancy analysis
+- JSON report generation
+- Comprehensive test suite
 
-> ⚠️ **Important**: This work must be use fork from this **existing project**.
+## Prerequisites
+- Python 3.8+
+- OpenWeatherMap API key
+- Playwright browsers
 
----
+## Installation
 
-## Test Case: City Temperature Discrepancy Analysis
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd pango-automation-interview-questions
+```
 
-### 1. City Selection
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-- Select **20 random cities** for the analysis. (Cities names could be hardcoded)
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### 2. Data Sources
+4. Install Playwright browsers:
+```bash
+playwright install
+```
 
-- **Website**  
-  Scrape current `temperature` and `feels like` values from [timeanddate.com](https://www.timeanddate.com/weather/).
+5. Configure the API key:
+   - Copy `automation_framework/config/config.ini.example` to `automation_framework/config/config.ini`
+   - Add your OpenWeatherMap API key to the `[API]` section
 
-- **API**  
-  Use the OpenWeatherMap API to fetch current weather data:  https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+## Usage
 
-### 3. Data Extraction
+### Running the Tests
+```bash
+pytest automation_framework/tests/
+```
 
-- **Web Scraping**  
-Use Selenium or Playwright to extract:
-- `temperature_web`
-- `feels_like_web`
+### Running the Pipeline
+```bash
+python -m automation_framework.main
+```
 
-- **API Call**  
-Extract the following fields from the JSON response:
-- `temperature_api`
-- `feels_like_api`
+### Viewing Reports
+Reports are generated in JSON format and stored in the `automation_framework/reports` directory. Each report includes:
+- Timestamp of data collection
+- Temperature discrepancy threshold
+- List of cities with significant temperature differences
+- Statistical analysis (mean, max, min discrepancies)
 
-### 4. Database Integration
+## Project Structure
+```
+automation_framework/
+├── config/
+│   └── config.ini          # Configuration file
+├── logs/                   # Application logs
+├── reports/               # Generated reports
+├── tests/
+│   ├── test_weather_pipeline.py  # End-to-end tests
+│   └── test_config.ini    # Test configuration
+└── utilities/
+    ├── api_helpers.py     # OpenWeatherMap API integration
+    ├── config_helpers.py  # Configuration management
+    ├── db_helpers.py      # Database operations
+    ├── report_generator.py # Report generation
+    └── web_scraper.py     # Web scraping functionality
+```
 
-- You are **free to define your own database but use this schema**.
-- For each city, store:
-- `temperature_web`
-- `feels_like_web`
-- `temperature_api`
-- `feels_like_api`
-- Add a computed column:
-- `avg_temperature` — the average of the web and API temperature values.
+## Configuration
+The `config.ini` file allows you to customize:
+- API settings
+- Database configuration
+- Temperature discrepancy threshold
+- List of cities to monitor
+- Logging settings
 
-### 5. Reporting
+## Error Handling
+The system handles various error scenarios:
+- Network connectivity issues
+- Invalid API responses
+- Database connection problems
+- Web scraping failures
 
-After data collection, generate a report. You may choose between:
-- A **single combined report**, or
-- **Two separate reports** (e.g., one for discrepancies and one for statistics)
+## Logging
+Logs are stored in the `automation_framework/logs` directory with different levels:
+- INFO: Normal operation
+- WARNING: Non-critical issues
+- ERROR: Critical failures
 
-**Format**:  
-- Free choice (CSV, HTML, JSON, Markdown, etc.)
+## Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-**Contents**:
-- Cities where the **difference between website and API temperatures exceeds a configurable threshold**
-- **Summary statistics**:
-- Mean discrepancy
-- Maximum discrepancy
-- Minimum discrepancy
-
----
-
-## Test Automation Framework
-
-Your solution must include an **automated test framework** that covers:
-
-- **End-to-end tests** for the full pipeline (data collection → DB → report)
-
-Use a standard Python testing framework. Ensure tests can be easily executed with clear instructions.
-
----
-
-## Submission Guidelines
-
-1. Push the following to the ** GitHub repository**:
- - Source code
- - Configuration files
- - Test scripts
- - Generated report(s)
-
-2. Include a README that provides:
- - Setup instructions
- - How to run the project and the tests
- - How to view and interpret the report(s)
-
----
-
-Good luck, and make sure your code is clean, well-documented, and testable!
+## License
+[Your chosen license]
