@@ -21,8 +21,7 @@ class ApiHelper:
             Optional[Dict]: Weather data dictionary or None if request fails
         """
         try:
-            city_id = self.config.get_city_id(city)
-            url = f"{self.base_url}?id={city_id}&appid={self.api_key}&units=metric"
+            url = f"{self.base_url}?q={city}&appid={self.api_key}&units=metric"
             response = requests.get(url, timeout=10)
             response.raise_for_status()
             return response.json()
@@ -82,9 +81,8 @@ class ApiHelper:
         """
         try:
             # Using London as a test city
-            city_id = self.config.get_city_id("London")
             response = requests.get(
-                f"{self.base_url}?id={city_id}&appid={self.api_key}",
+                f"{self.base_url}?q=London&appid={self.api_key}",
                 timeout=5
             )
             return response.status_code == 200
