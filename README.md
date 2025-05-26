@@ -63,13 +63,6 @@ playwright install
    $env:OPENWEATHER_API_KEY="your_api_key_here"
    ```
 
-## Security Notes
-
-- Never commit API keys or sensitive credentials to version control
-- The `config.ini` file is gitignored to prevent accidental commits
-- Use environment variables for sensitive data
-- Keep your API keys secure and rotate them regularly
-
 ## Usage
 
 ### Running the Tests
