@@ -44,11 +44,37 @@ playwright install
    - Copy `automation_framework/config/config.ini.example` to `automation_framework/config/config.ini`
    - Add your OpenWeatherMap API key to the `[API]` section
 
+## Setup Instructions
+
+1. Clone the repository
+2. Copy the template config file:
+   ```bash
+   cp automation_framework/config/config.ini.template automation_framework/config/config.ini
+   ```
+3. Set up your environment variables:
+   ```bash
+   # For Linux/Mac
+   export OPENWEATHER_API_KEY=your_api_key_here
+   
+   # For Windows (Command Prompt)
+   set OPENWEATHER_API_KEY=your_api_key_here
+   
+   # For Windows (PowerShell)
+   $env:OPENWEATHER_API_KEY="your_api_key_here"
+   ```
+
+## Security Notes
+
+- Never commit API keys or sensitive credentials to version control
+- The `config.ini` file is gitignored to prevent accidental commits
+- Use environment variables for sensitive data
+- Keep your API keys secure and rotate them regularly
+
 ## Usage
 
 ### Running the Tests
 ```bash
-pytest automation_framework/tests/
+pytest automation_framework/tests/test_weather_pipeline.py -v
 ```
 
 ### Running the Pipeline
@@ -67,12 +93,12 @@ Reports are generated in JSON format and stored in the `automation_framework/rep
 ```
 automation_framework/
 ├── config/
-│   └── config.ini          # Configuration file
+│   ├── config.ini.template  # Template configuration file
+│   └── config.ini          # Local configuration (gitignored)
 ├── logs/                   # Application logs
-├── reports/               # Generated reports
+├── reports/               # Generated reports (gitignored)
 ├── tests/
-│   ├── test_weather_pipeline.py  # End-to-end tests
-│   └── test_config.ini    # Test configuration
+│   └── test_weather_pipeline.py
 └── utilities/
     ├── api_helpers.py     # OpenWeatherMap API integration
     ├── config_helpers.py  # Configuration management
@@ -89,25 +115,14 @@ The `config.ini` file allows you to customize:
 - List of cities to monitor
 - Logging settings
 
-## Error Handling
-The system handles various error scenarios:
-- Network connectivity issues
-- Invalid API responses
-- Database connection problems
-- Web scraping failures
-
 ## Logging
-Logs are stored in the `automation_framework/logs` directory with different levels:
-- INFO: Normal operation
-- WARNING: Non-critical issues
-- ERROR: Critical failures
+Logs are stored in the `automation_framework/logs` directory.
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+## Report Generation
 
-## License
-[Your chosen license]
+Test reports are generated in the `automation_framework/reports` directory. Each report includes:
+- Timestamp
+- Temperature discrepancies between web and API data
+- Statistical analysis
+- Test execution status
+- City with highest average temperature

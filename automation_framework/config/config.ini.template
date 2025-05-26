@@ -3,7 +3,7 @@ API_KEY = ${OPENWEATHER_API_KEY}  # Set this via environment variable
 BASE_URL = https://api.openweathermap.org/data/2.5/weather
 
 [Database]
-DB_NAME = automation_framework/tests/data/test_weather_data.db
+DB_NAME = weather_data.db
 
 [Analysis]
 TEMPERATURE_THRESHOLD = 2.0  # Temperature difference threshold in Celsius
@@ -77,4 +77,4 @@ United Arab Emirates = united-arab-emirates
 
 [Logging]
 LOG_LEVEL = INFO
-LOG_FILE = automation_framework/tests/logs/test.log 
+LOG_FILE = automation_framework/logs/app.log 

@@ -3,42 +3,40 @@ from typing import Dict, List, Tuple
 import os
 
 class ConfigHelper:
-    def __init__(self, config_path: str = "automation_framework/config/config.ini"):
+    def __init__(self, config_path: str):
         self.config = configparser.ConfigParser()
-        self.config_path = config_path
-        self.load_config()
-
-    def load_config(self) -> None:
-        """Load configuration from file"""
-        if not os.path.exists(self.config_path):
-            raise FileNotFoundError(f"Configuration file not found: {self.config_path}")
-        self.config.read(self.config_path)
+        self.config.read(config_path)
 
     def get_api_key(self) -> str:
-        """Get OpenWeatherMap API key"""
-        api_key = self.config.get("API", "API_KEY")
-        if api_key == "your_api_key_here":
-            raise ValueError("Please set your OpenWeatherMap API key in config.ini")
+        api_key = os.getenv('OPENWEATHER_API_KEY')
+        if not api_key:
+            raise ValueError("OPENWEATHER_API_KEY environment variable is not set")
         return api_key
 
     def get_db_name(self) -> str:
-        """Get database name"""
-        return self.config.get("Database", "DB_NAME")
+        return self.config.get('Database', 'DB_NAME')
 
     def get_temperature_threshold(self) -> float:
-        """Get temperature discrepancy threshold"""
-        return self.config.getfloat("Analysis", "TEMPERATURE_THRESHOLD")
+        return self.config.getfloat('Analysis', 'TEMPERATURE_THRESHOLD')
 
     def get_cities(self) -> List[Tuple[str, str]]:
-        """Get list of cities and their countries"""
         cities = []
-        for city, country in self.config["Cities"].items():
-            cities.append((city.strip(), country.strip()))
+        for city, country in self.config['Cities'].items():
+            if city != 'DEFAULT':
+                cities.append((city.strip(), country.strip()))
         return cities
 
-    def get_log_config(self) -> Dict[str, str]:
-        """Get logging configuration"""
-        return {
-            "level": self.config.get("Logging", "LOG_LEVEL"),
-            "file": self.config.get("Logging", "LOG_FILE")
-        } 
+    def get_log_level(self) -> str:
+        return self.config.get('Logging', 'LOG_LEVEL')
+
+    def get_log_file(self) -> str:
+        return self.config.get('Logging', 'LOG_FILE')
+
+    def get_country_codes(self) -> Dict[str, str]:
+        return {country.strip(): code.strip() for country, code in self.config['CountryCodes'].items()}
+
+    def get_api_base_url(self) -> str:
+        return self.config.get('API', 'BASE_URL', fallback='https://api.openweathermap.org/data/2.5/weather')
+
+    def get_city_id(self, city: str) -> str:
+        return self.config.get('CityIDs', city) 

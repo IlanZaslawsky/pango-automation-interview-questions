@@ -5,24 +5,19 @@ import os
 
 class DatabaseHelper:
     def __init__(self, config_path):
-        # Load configuration
         config = ConfigHelper(config_path)
         db_name = config.get_db_name()
         
-        # Ensure the database directory exists
         db_dir = os.path.dirname(db_name)
         if db_dir:
             os.makedirs(db_dir, exist_ok=True)
             
-        # Register datetime adapter
         sqlite3.register_adapter(datetime, lambda dt: dt.isoformat())
         
-        # Connect to database
         self.conn = sqlite3.connect(db_name)
         self.create_tables()
 
     def create_tables(self):
-        # Create tables if they don't exist
         with self.conn:
             self.conn.execute('''CREATE TABLE IF NOT EXISTS weather_data (
                 city TEXT PRIMARY KEY,
@@ -35,9 +30,6 @@ class DatabaseHelper:
             )''')
 
     def store_weather_data(self, city, temperature, feels_like, source):
-        """
-        Store weather data from either web or API source
-        """
         timestamp = datetime.now()
         
         with self.conn:
@@ -54,6 +46,14 @@ class DatabaseHelper:
                     WHERE city = ?
                 ''', (temperature, feels_like, timestamp, city))
 
+    def store_average_temperature(self, city, avg_temperature):
+        with self.conn:
+            self.conn.execute('''
+                UPDATE weather_data 
+                SET avg_temperature = ?
+                WHERE city = ?
+            ''', (avg_temperature, city))
+
     def get_weather_data(self, source=None):
         """
         Retrieve weather data for a specific source or all data
@@ -66,10 +66,29 @@ class DatabaseHelper:
             cursor = self.conn.execute('SELECT * FROM weather_data')
         return list(cursor.fetchall())  # Convert cursor to list
 
+    def get_average_temperatures(self):
+        """
+        Get average temperatures for all cities
+        Returns a dictionary of city names and their average temperatures
+        """
+        cursor = self.conn.execute('SELECT city, avg_temperature FROM weather_data')
+        return dict(cursor.fetchall())
+
+    def get_highest_temperature_city(self):
+        """
+        Get the city with the highest average temperature
+        Returns a tuple of (city, temperature)
+        """
+        cursor = self.conn.execute('''
+            SELECT city, avg_temperature 
+            FROM weather_data 
+            WHERE avg_temperature IS NOT NULL
+            ORDER BY avg_temperature DESC 
+            LIMIT 1
+        ''')
+        return cursor.fetchone()
+
     def get_temperature_discrepancies(self, threshold):
-        """
-        Get cities where temperature difference exceeds the threshold
-        """
         cursor = self.conn.execute('''
             SELECT city, 
                    temperature_web, 
@@ -94,8 +113,5 @@ class DatabaseHelper:
         return cursor.fetchone()
 
     def close(self):
-        """
-        Close the database connection
-        """
         self.conn.close()
 

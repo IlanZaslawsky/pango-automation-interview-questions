@@ -4,12 +4,11 @@ from typing import Dict, Optional, Tuple, List
 from .config_helpers import ConfigHelper
 
 class ApiHelper:
-    BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
-    
     def __init__(self, config_path: str):
-        config = ConfigHelper(config_path)
-        self.api_key = config.get_api_key()
+        self.config = ConfigHelper(config_path)
+        self.api_key = self.config.get_api_key()
         self.logger = logging.getLogger(__name__)
+        self.base_url = self.config.get_api_base_url()
 
     def get_current_weather(self, city: str) -> Optional[Dict]:
         """
@@ -22,7 +21,8 @@ class ApiHelper:
             Optional[Dict]: Weather data dictionary or None if request fails
         """
         try:
-            url = f"{self.BASE_URL}?q={city}&appid={self.api_key}&units=metric"
+            city_id = self.config.get_city_id(city)
+            url = f"{self.base_url}?id={city_id}&appid={self.api_key}&units=metric"
             response = requests.get(url, timeout=10)
             response.raise_for_status()
             return response.json()
@@ -82,8 +82,9 @@ class ApiHelper:
         """
         try:
             # Using London as a test city
+            city_id = self.config.get_city_id("London")
             response = requests.get(
-                f"{self.BASE_URL}?q=London&appid={self.api_key}",
+                f"{self.base_url}?id={city_id}&appid={self.api_key}",
                 timeout=5
             )
             return response.status_code == 200
